@@ -10,5 +10,6 @@
  */
 export type * from './models/File'
 export type * from './models/Note'
+export type * from './models/Upload'
 export type * from './models/User'
 export type * from './commonInputTypes'

@@ -6,8 +6,9 @@ model User {
     storage  Int    @default(15360)
     used     Int    @default(0)
 
-    files File[]
-    notes Note[]
+    files   File[]
+    notes   Note[]
+    uploads Upload[]
     //   favorites Favorite[]
 
     createdAt DateTime @default(now())

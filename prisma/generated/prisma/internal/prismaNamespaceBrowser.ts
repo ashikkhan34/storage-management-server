@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   File: 'File',
   Note: 'Note',
+  Upload: 'Upload',
   User: 'User'
 } as const
 
@@ -95,6 +96,19 @@ export const NoteScalarFieldEnum = {
 } as const
 
 export type NoteScalarFieldEnum = (typeof NoteScalarFieldEnum)[keyof typeof NoteScalarFieldEnum]
+
+
+export const UploadScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  url: 'url',
+  size: 'size',
+  fileId: 'fileId',
+  createdAt: 'createdAt',
+  userId: 'userId'
+} as const
+
+export type UploadScalarFieldEnum = (typeof UploadScalarFieldEnum)[keyof typeof UploadScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {

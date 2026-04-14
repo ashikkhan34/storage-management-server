@@ -50,6 +50,11 @@ export type File = Prisma.FileModel
  */
 export type Note = Prisma.NoteModel
 /**
+ * Model Upload
+ * 
+ */
+export type Upload = Prisma.UploadModel
+/**
  * Model User
  * 
  */
