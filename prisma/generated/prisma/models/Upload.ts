@@ -36,32 +36,41 @@ export type UploadSumAggregateOutputType = {
 
 export type UploadMinAggregateOutputType = {
   id: string | null
-  type: string | null
-  url: string | null
+  fileName: string | null
+  originalName: string | null
+  mimetype: string | null
   size: number | null
+  url: string | null
+  publicId: string | null
+  userId: string | null
   fileId: string | null
   createdAt: Date | null
-  userId: string | null
 }
 
 export type UploadMaxAggregateOutputType = {
   id: string | null
-  type: string | null
-  url: string | null
+  fileName: string | null
+  originalName: string | null
+  mimetype: string | null
   size: number | null
+  url: string | null
+  publicId: string | null
+  userId: string | null
   fileId: string | null
   createdAt: Date | null
-  userId: string | null
 }
 
 export type UploadCountAggregateOutputType = {
   id: number
-  type: number
-  url: number
+  fileName: number
+  originalName: number
+  mimetype: number
   size: number
+  url: number
+  publicId: number
+  userId: number
   fileId: number
   createdAt: number
-  userId: number
   _all: number
 }
 
@@ -76,32 +85,41 @@ export type UploadSumAggregateInputType = {
 
 export type UploadMinAggregateInputType = {
   id?: true
-  type?: true
-  url?: true
+  fileName?: true
+  originalName?: true
+  mimetype?: true
   size?: true
+  url?: true
+  publicId?: true
+  userId?: true
   fileId?: true
   createdAt?: true
-  userId?: true
 }
 
 export type UploadMaxAggregateInputType = {
   id?: true
-  type?: true
-  url?: true
+  fileName?: true
+  originalName?: true
+  mimetype?: true
   size?: true
+  url?: true
+  publicId?: true
+  userId?: true
   fileId?: true
   createdAt?: true
-  userId?: true
 }
 
 export type UploadCountAggregateInputType = {
   id?: true
-  type?: true
-  url?: true
+  fileName?: true
+  originalName?: true
+  mimetype?: true
   size?: true
+  url?: true
+  publicId?: true
+  userId?: true
   fileId?: true
   createdAt?: true
-  userId?: true
   _all?: true
 }
 
@@ -193,12 +211,15 @@ export type UploadGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type UploadGroupByOutputType = {
   id: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
-  fileId: string
+  url: string
+  publicId: string
+  userId: string
+  fileId: string | null
   createdAt: Date
-  userId: string | null
   _count: UploadCountAggregateOutputType | null
   _avg: UploadAvgAggregateOutputType | null
   _sum: UploadSumAggregateOutputType | null
@@ -226,26 +247,32 @@ export type UploadWhereInput = {
   OR?: Prisma.UploadWhereInput[]
   NOT?: Prisma.UploadWhereInput | Prisma.UploadWhereInput[]
   id?: Prisma.StringFilter<"Upload"> | string
-  type?: Prisma.StringFilter<"Upload"> | string
+  fileName?: Prisma.StringFilter<"Upload"> | string
+  originalName?: Prisma.StringFilter<"Upload"> | string
+  mimetype?: Prisma.StringFilter<"Upload"> | string
+  size?: Prisma.IntFilter<"Upload"> | number
   url?: Prisma.StringFilter<"Upload"> | string
-  size?: Prisma.FloatFilter<"Upload"> | number
-  fileId?: Prisma.StringFilter<"Upload"> | string
+  publicId?: Prisma.StringFilter<"Upload"> | string
+  userId?: Prisma.StringFilter<"Upload"> | string
+  fileId?: Prisma.StringNullableFilter<"Upload"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Upload"> | Date | string
-  userId?: Prisma.StringNullableFilter<"Upload"> | string | null
-  file?: Prisma.XOR<Prisma.FileScalarRelationFilter, Prisma.FileWhereInput>
-  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  file?: Prisma.XOR<Prisma.FileNullableScalarRelationFilter, Prisma.FileWhereInput> | null
 }
 
 export type UploadOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
+  fileName?: Prisma.SortOrder
+  originalName?: Prisma.SortOrder
+  mimetype?: Prisma.SortOrder
   size?: Prisma.SortOrder
-  fileId?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  publicId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  fileId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  userId?: Prisma.SortOrderInput | Prisma.SortOrder
-  file?: Prisma.FileOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  file?: Prisma.FileOrderByWithRelationInput
 }
 
 export type UploadWhereUniqueInput = Prisma.AtLeast<{
@@ -253,24 +280,30 @@ export type UploadWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UploadWhereInput | Prisma.UploadWhereInput[]
   OR?: Prisma.UploadWhereInput[]
   NOT?: Prisma.UploadWhereInput | Prisma.UploadWhereInput[]
-  type?: Prisma.StringFilter<"Upload"> | string
+  fileName?: Prisma.StringFilter<"Upload"> | string
+  originalName?: Prisma.StringFilter<"Upload"> | string
+  mimetype?: Prisma.StringFilter<"Upload"> | string
+  size?: Prisma.IntFilter<"Upload"> | number
   url?: Prisma.StringFilter<"Upload"> | string
-  size?: Prisma.FloatFilter<"Upload"> | number
-  fileId?: Prisma.StringFilter<"Upload"> | string
+  publicId?: Prisma.StringFilter<"Upload"> | string
+  userId?: Prisma.StringFilter<"Upload"> | string
+  fileId?: Prisma.StringNullableFilter<"Upload"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Upload"> | Date | string
-  userId?: Prisma.StringNullableFilter<"Upload"> | string | null
-  file?: Prisma.XOR<Prisma.FileScalarRelationFilter, Prisma.FileWhereInput>
-  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  file?: Prisma.XOR<Prisma.FileNullableScalarRelationFilter, Prisma.FileWhereInput> | null
 }, "id">
 
 export type UploadOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
+  fileName?: Prisma.SortOrder
+  originalName?: Prisma.SortOrder
+  mimetype?: Prisma.SortOrder
   size?: Prisma.SortOrder
-  fileId?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  publicId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  fileId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  userId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UploadCountOrderByAggregateInput
   _avg?: Prisma.UploadAvgOrderByAggregateInput
   _max?: Prisma.UploadMaxOrderByAggregateInput
@@ -283,80 +316,104 @@ export type UploadScalarWhereWithAggregatesInput = {
   OR?: Prisma.UploadScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UploadScalarWhereWithAggregatesInput | Prisma.UploadScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Upload"> | string
-  type?: Prisma.StringWithAggregatesFilter<"Upload"> | string
+  fileName?: Prisma.StringWithAggregatesFilter<"Upload"> | string
+  originalName?: Prisma.StringWithAggregatesFilter<"Upload"> | string
+  mimetype?: Prisma.StringWithAggregatesFilter<"Upload"> | string
+  size?: Prisma.IntWithAggregatesFilter<"Upload"> | number
   url?: Prisma.StringWithAggregatesFilter<"Upload"> | string
-  size?: Prisma.FloatWithAggregatesFilter<"Upload"> | number
-  fileId?: Prisma.StringWithAggregatesFilter<"Upload"> | string
+  publicId?: Prisma.StringWithAggregatesFilter<"Upload"> | string
+  userId?: Prisma.StringWithAggregatesFilter<"Upload"> | string
+  fileId?: Prisma.StringNullableWithAggregatesFilter<"Upload"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Upload"> | Date | string
-  userId?: Prisma.StringNullableWithAggregatesFilter<"Upload"> | string | null
 }
 
 export type UploadCreateInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
+  url: string
+  publicId: string
   createdAt?: Date | string
-  file: Prisma.FileCreateNestedOneWithoutUploadsInput
-  user?: Prisma.UserCreateNestedOneWithoutUploadsInput
+  user: Prisma.UserCreateNestedOneWithoutUploadInput
+  file?: Prisma.FileCreateNestedOneWithoutUploadsInput
 }
 
 export type UploadUncheckedCreateInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
-  fileId: string
+  url: string
+  publicId: string
+  userId: string
+  fileId?: string | null
   createdAt?: Date | string
-  userId?: string | null
 }
 
 export type UploadUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  file?: Prisma.FileUpdateOneRequiredWithoutUploadsNestedInput
-  user?: Prisma.UserUpdateOneWithoutUploadsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutUploadNestedInput
+  file?: Prisma.FileUpdateOneWithoutUploadsNestedInput
 }
 
 export type UploadUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
-  fileId?: Prisma.StringFieldUpdateOperationsInput | string
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UploadCreateManyInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
-  fileId: string
+  url: string
+  publicId: string
+  userId: string
+  fileId?: string | null
   createdAt?: Date | string
-  userId?: string | null
 }
 
 export type UploadUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UploadUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
-  fileId?: Prisma.StringFieldUpdateOperationsInput | string
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UploadListRelationFilter = {
@@ -371,12 +428,15 @@ export type UploadOrderByRelationAggregateInput = {
 
 export type UploadCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
+  fileName?: Prisma.SortOrder
+  originalName?: Prisma.SortOrder
+  mimetype?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  publicId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
 }
 
 export type UploadAvgOrderByAggregateInput = {
@@ -385,22 +445,28 @@ export type UploadAvgOrderByAggregateInput = {
 
 export type UploadMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
+  fileName?: Prisma.SortOrder
+  originalName?: Prisma.SortOrder
+  mimetype?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  publicId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
 }
 
 export type UploadMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  url?: Prisma.SortOrder
+  fileName?: Prisma.SortOrder
+  originalName?: Prisma.SortOrder
+  mimetype?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  publicId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   fileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
 }
 
 export type UploadSumOrderByAggregateInput = {
@@ -449,6 +515,14 @@ export type UploadUncheckedUpdateManyWithoutFileNestedInput = {
   deleteMany?: Prisma.UploadScalarWhereInput | Prisma.UploadScalarWhereInput[]
 }
 
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type UploadCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.UploadCreateWithoutUserInput, Prisma.UploadUncheckedCreateWithoutUserInput> | Prisma.UploadCreateWithoutUserInput[] | Prisma.UploadUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.UploadCreateOrConnectWithoutUserInput | Prisma.UploadCreateOrConnectWithoutUserInput[]
@@ -493,20 +567,26 @@ export type UploadUncheckedUpdateManyWithoutUserNestedInput = {
 
 export type UploadCreateWithoutFileInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
+  url: string
+  publicId: string
   createdAt?: Date | string
-  user?: Prisma.UserCreateNestedOneWithoutUploadsInput
+  user: Prisma.UserCreateNestedOneWithoutUploadInput
 }
 
 export type UploadUncheckedCreateWithoutFileInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
+  url: string
+  publicId: string
+  userId: string
   createdAt?: Date | string
-  userId?: string | null
 }
 
 export type UploadCreateOrConnectWithoutFileInput = {
@@ -540,29 +620,38 @@ export type UploadScalarWhereInput = {
   OR?: Prisma.UploadScalarWhereInput[]
   NOT?: Prisma.UploadScalarWhereInput | Prisma.UploadScalarWhereInput[]
   id?: Prisma.StringFilter<"Upload"> | string
-  type?: Prisma.StringFilter<"Upload"> | string
+  fileName?: Prisma.StringFilter<"Upload"> | string
+  originalName?: Prisma.StringFilter<"Upload"> | string
+  mimetype?: Prisma.StringFilter<"Upload"> | string
+  size?: Prisma.IntFilter<"Upload"> | number
   url?: Prisma.StringFilter<"Upload"> | string
-  size?: Prisma.FloatFilter<"Upload"> | number
-  fileId?: Prisma.StringFilter<"Upload"> | string
+  publicId?: Prisma.StringFilter<"Upload"> | string
+  userId?: Prisma.StringFilter<"Upload"> | string
+  fileId?: Prisma.StringNullableFilter<"Upload"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Upload"> | Date | string
-  userId?: Prisma.StringNullableFilter<"Upload"> | string | null
 }
 
 export type UploadCreateWithoutUserInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
+  url: string
+  publicId: string
   createdAt?: Date | string
-  file: Prisma.FileCreateNestedOneWithoutUploadsInput
+  file?: Prisma.FileCreateNestedOneWithoutUploadsInput
 }
 
 export type UploadUncheckedCreateWithoutUserInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
-  fileId: string
+  url: string
+  publicId: string
+  fileId?: string | null
   createdAt?: Date | string
 }
 
@@ -594,73 +683,97 @@ export type UploadUpdateManyWithWhereWithoutUserInput = {
 
 export type UploadCreateManyFileInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
+  url: string
+  publicId: string
+  userId: string
   createdAt?: Date | string
-  userId?: string | null
 }
 
 export type UploadUpdateWithoutFileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneWithoutUploadsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutUploadNestedInput
 }
 
 export type UploadUncheckedUpdateWithoutFileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UploadUncheckedUpdateManyWithoutFileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UploadCreateManyUserInput = {
   id?: string
-  type: string
-  url: string
+  fileName: string
+  originalName: string
+  mimetype: string
   size: number
-  fileId: string
+  url: string
+  publicId: string
+  fileId?: string | null
   createdAt?: Date | string
 }
 
 export type UploadUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  file?: Prisma.FileUpdateOneRequiredWithoutUploadsNestedInput
+  file?: Prisma.FileUpdateOneWithoutUploadsNestedInput
 }
 
 export type UploadUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
-  fileId?: Prisma.StringFieldUpdateOperationsInput | string
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
+  fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UploadUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimetype?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
   url?: Prisma.StringFieldUpdateOperationsInput | string
-  size?: Prisma.FloatFieldUpdateOperationsInput | number
-  fileId?: Prisma.StringFieldUpdateOperationsInput | string
+  publicId?: Prisma.StringFieldUpdateOperationsInput | string
+  fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -668,78 +781,93 @@ export type UploadUncheckedUpdateManyWithoutUserInput = {
 
 export type UploadSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
-  url?: boolean
+  fileName?: boolean
+  originalName?: boolean
+  mimetype?: boolean
   size?: boolean
+  url?: boolean
+  publicId?: boolean
+  userId?: boolean
   fileId?: boolean
   createdAt?: boolean
-  userId?: boolean
-  file?: boolean | Prisma.FileDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.Upload$userArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  file?: boolean | Prisma.Upload$fileArgs<ExtArgs>
 }, ExtArgs["result"]["upload"]>
 
 export type UploadSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
-  url?: boolean
+  fileName?: boolean
+  originalName?: boolean
+  mimetype?: boolean
   size?: boolean
+  url?: boolean
+  publicId?: boolean
+  userId?: boolean
   fileId?: boolean
   createdAt?: boolean
-  userId?: boolean
-  file?: boolean | Prisma.FileDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.Upload$userArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  file?: boolean | Prisma.Upload$fileArgs<ExtArgs>
 }, ExtArgs["result"]["upload"]>
 
 export type UploadSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
-  url?: boolean
+  fileName?: boolean
+  originalName?: boolean
+  mimetype?: boolean
   size?: boolean
+  url?: boolean
+  publicId?: boolean
+  userId?: boolean
   fileId?: boolean
   createdAt?: boolean
-  userId?: boolean
-  file?: boolean | Prisma.FileDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.Upload$userArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  file?: boolean | Prisma.Upload$fileArgs<ExtArgs>
 }, ExtArgs["result"]["upload"]>
 
 export type UploadSelectScalar = {
   id?: boolean
-  type?: boolean
-  url?: boolean
+  fileName?: boolean
+  originalName?: boolean
+  mimetype?: boolean
   size?: boolean
+  url?: boolean
+  publicId?: boolean
+  userId?: boolean
   fileId?: boolean
   createdAt?: boolean
-  userId?: boolean
 }
 
-export type UploadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "url" | "size" | "fileId" | "createdAt" | "userId", ExtArgs["result"]["upload"]>
+export type UploadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "fileName" | "originalName" | "mimetype" | "size" | "url" | "publicId" | "userId" | "fileId" | "createdAt", ExtArgs["result"]["upload"]>
 export type UploadInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  file?: boolean | Prisma.FileDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.Upload$userArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  file?: boolean | Prisma.Upload$fileArgs<ExtArgs>
 }
 export type UploadIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  file?: boolean | Prisma.FileDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.Upload$userArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  file?: boolean | Prisma.Upload$fileArgs<ExtArgs>
 }
 export type UploadIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  file?: boolean | Prisma.FileDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.Upload$userArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  file?: boolean | Prisma.Upload$fileArgs<ExtArgs>
 }
 
 export type $UploadPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Upload"
   objects: {
-    file: Prisma.$FilePayload<ExtArgs>
-    user: Prisma.$UserPayload<ExtArgs> | null
+    user: Prisma.$UserPayload<ExtArgs>
+    file: Prisma.$FilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    type: string
-    url: string
+    fileName: string
+    originalName: string
+    mimetype: string
     size: number
-    fileId: string
+    url: string
+    publicId: string
+    userId: string
+    fileId: string | null
     createdAt: Date
-    userId: string | null
   }, ExtArgs["result"]["upload"]>
   composites: {}
 }
@@ -1134,8 +1262,8 @@ readonly fields: UploadFieldRefs;
  */
 export interface Prisma__UploadClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  file<T extends Prisma.FileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileDefaultArgs<ExtArgs>>): Prisma.Prisma__FileClient<runtime.Types.Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  user<T extends Prisma.Upload$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Upload$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  file<T extends Prisma.Upload$fileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Upload$fileArgs<ExtArgs>>): Prisma.Prisma__FileClient<runtime.Types.Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1166,12 +1294,15 @@ export interface Prisma__UploadClient<T, Null = never, ExtArgs extends runtime.T
  */
 export interface UploadFieldRefs {
   readonly id: Prisma.FieldRef<"Upload", 'String'>
-  readonly type: Prisma.FieldRef<"Upload", 'String'>
+  readonly fileName: Prisma.FieldRef<"Upload", 'String'>
+  readonly originalName: Prisma.FieldRef<"Upload", 'String'>
+  readonly mimetype: Prisma.FieldRef<"Upload", 'String'>
+  readonly size: Prisma.FieldRef<"Upload", 'Int'>
   readonly url: Prisma.FieldRef<"Upload", 'String'>
-  readonly size: Prisma.FieldRef<"Upload", 'Float'>
+  readonly publicId: Prisma.FieldRef<"Upload", 'String'>
+  readonly userId: Prisma.FieldRef<"Upload", 'String'>
   readonly fileId: Prisma.FieldRef<"Upload", 'String'>
   readonly createdAt: Prisma.FieldRef<"Upload", 'DateTime'>
-  readonly userId: Prisma.FieldRef<"Upload", 'String'>
 }
     
 
@@ -1573,22 +1704,22 @@ export type UploadDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * Upload.user
+ * Upload.file
  */
-export type Upload$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Upload$fileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the User
+   * Select specific fields to fetch from the File
    */
-  select?: Prisma.UserSelect<ExtArgs> | null
+  select?: Prisma.FileSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the User
+   * Omit specific fields from the File
    */
-  omit?: Prisma.UserOmit<ExtArgs> | null
+  omit?: Prisma.FileOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  where?: Prisma.UserWhereInput
+  include?: Prisma.FileInclude<ExtArgs> | null
+  where?: Prisma.FileWhereInput
 }
 
 /**

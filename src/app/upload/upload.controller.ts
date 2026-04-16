@@ -1,41 +1,77 @@
+// src/app/upload/upload.controller.ts
 import { Request, Response } from "express";
-import { uploadItemService } from "./upload.service";
+import {
+  deleteFileService,
+  getFilesByDateService,
+  uploadFileService,
+} from "./upload.service";
 
-export const uploadController = async (req: any, res: Response) => {
+export const uploadFileController = async (req: Request, res: Response) => {
   try {
-    const file = req.file;
-    // 🔥 Safe check
-    if (!req.user?.id) {
-      return res.status(401).json({
-        success: false,
-        message: "User not authenticated...",
-      });
-    }
-    const userId = req.user.id; // from auth middleware
-    const fileId = req.body.fileId;
+    const file = req.file!;
+    const userId = (req as any).user.id;
 
-    if (!file) {
-      return res.status(400).json({
-        success: false,
-        message: "No file uploaded",
-      });
-    }
+    const data = await uploadFileService(file, userId);
 
-    const result = await uploadItemService({
-      file,
-      userId,
-      fileId,
-    });
-
-    res.status(200).json({
+    res.json({
       success: true,
-      message: "File uploaded successfully",
-      data: result,
+      message: "File uploaded",
+      data,
     });
   } catch (error: any) {
     res.status(500).json({
       success: false,
-      message: error.message || "file upload failed....",
+      message: error.message || "file upload failed",
+    });
+  }
+};
+
+export const deleteFileController = async (req: Request, res: Response) => {
+  try {
+    const userId = (req as any).user.id;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+    await deleteFileService(id, userId);
+
+    res.json({
+      success: true,
+      message: "File deleted",
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const getFilesByDateController = async (req: Request, res: Response) => {
+  try {
+    const userId = (req as any).user.id;
+
+    const { startDate, endDate } = req.query;
+
+    if (!startDate || !endDate) {
+      return res.status(400).json({
+        success: false,
+        message: "startDate and endDate required",
+      });
+    }
+
+    const data = await getFilesByDateService(
+      userId,
+      startDate as string,
+      endDate as string,
+    );
+
+    res.json({
+      success: true,
+      total: data.length,
+      data,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
     });
   }
 };

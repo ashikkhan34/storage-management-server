@@ -100,12 +100,15 @@ export type NoteScalarFieldEnum = (typeof NoteScalarFieldEnum)[keyof typeof Note
 
 export const UploadScalarFieldEnum = {
   id: 'id',
-  type: 'type',
-  url: 'url',
+  fileName: 'fileName',
+  originalName: 'originalName',
+  mimetype: 'mimetype',
   size: 'size',
+  url: 'url',
+  publicId: 'publicId',
+  userId: 'userId',
   fileId: 'fileId',
-  createdAt: 'createdAt',
-  userId: 'userId'
+  createdAt: 'createdAt'
 } as const
 
 export type UploadScalarFieldEnum = (typeof UploadScalarFieldEnum)[keyof typeof UploadScalarFieldEnum]

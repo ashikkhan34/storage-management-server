@@ -402,9 +402,9 @@ export type FileSumOrderByAggregateInput = {
   size?: Prisma.SortOrder
 }
 
-export type FileScalarRelationFilter = {
-  is?: Prisma.FileWhereInput
-  isNot?: Prisma.FileWhereInput
+export type FileNullableScalarRelationFilter = {
+  is?: Prisma.FileWhereInput | null
+  isNot?: Prisma.FileWhereInput | null
 }
 
 export type FileListRelationFilter = {
@@ -447,10 +447,12 @@ export type FileCreateNestedOneWithoutUploadsInput = {
   connect?: Prisma.FileWhereUniqueInput
 }
 
-export type FileUpdateOneRequiredWithoutUploadsNestedInput = {
+export type FileUpdateOneWithoutUploadsNestedInput = {
   create?: Prisma.XOR<Prisma.FileCreateWithoutUploadsInput, Prisma.FileUncheckedCreateWithoutUploadsInput>
   connectOrCreate?: Prisma.FileCreateOrConnectWithoutUploadsInput
   upsert?: Prisma.FileUpsertWithoutUploadsInput
+  disconnect?: Prisma.FileWhereInput | boolean
+  delete?: Prisma.FileWhereInput | boolean
   connect?: Prisma.FileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.FileUpdateToOneWithWhereWithoutUploadsInput, Prisma.FileUpdateWithoutUploadsInput>, Prisma.FileUncheckedUpdateWithoutUploadsInput>
 }

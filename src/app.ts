@@ -22,7 +22,7 @@ app.use("/api/auth", loginRoute);
 app.use("/api/auth", loginRoute);
 app.use("/api/note", noteRouter);
 app.use("/api/file", fileRouter);
-app.use("/api/upload", uploadRouter);
+app.use("/api/upload-file", uploadRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");

@@ -1,16 +1,18 @@
+// src/app/upload/upload.route.ts
 import express from "express";
-import { uploadController } from "./upload.controller";
-import { upload } from "./upload.middleware";
 import auth from "../../middleware/auth";
+import { upload } from "./upload.middleware";
+import {
+  deleteFileController,
+  getFilesByDateController,
+  uploadFileController,
+} from "./upload.controller";
 
 const router = express.Router();
 
-// single file upload
-router.post(
-  "/",
-  auth,
-  upload.single("file"), // field name = file
-  uploadController,
-);
+router.post("/", auth, upload.single("file"), uploadFileController);
+router.get("/filter", auth, getFilesByDateController);
+
+router.delete("/:id", auth, deleteFileController);
 
 export const uploadRouter = router;

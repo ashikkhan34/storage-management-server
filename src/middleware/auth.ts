@@ -21,7 +21,8 @@ const auth = (req: any, res: Response, next: NextFunction) => {
     }
 
     const token = authHeader.substring(7); // Remove 'Bearer ' prefix
-    console.log("token..", token);
+    // console.log("token..", token);
+
     if (!token) {
       return res.status(401).json({
         success: false,
